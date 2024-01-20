@@ -1,0 +1,69 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class VoltMoneyProject {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.gecko.driver", "C:\\Users\\HP\\Downloads\\geckodriver-v0.33.0-win64\\geckodriver.exe");
+		WebDriver driver = new FirefoxDriver(); // Launching the specific browser
+		driver.manage().window().maximize();
+		
+		driver.get("https://www.saucedemo.com/"); // Launching the website
+		
+		//Entering valid input in username and password field and login
+		WebElement username = driver.findElement(By.id("user-name"));
+		username.sendKeys("standard_user");//entering username 
+		WebElement password = driver.findElement(By.id("password"));
+		password.sendKeys("secret_sauce"); //entering password
+		WebElement login = driver.findElement(By.id("login-button"));
+		login.click(); //click on login button
+		
+		Thread.sleep(2000);
+		//Clicking on Add to cart button
+		WebElement addtocart = driver.findElement(By.id("add-to-cart-sauce-labs-backpack"));
+		addtocart.click();
+		
+		
+		
+		Thread.sleep(2000);	
+		//Check on Checkout form
+		WebElement cart = driver.findElement(By.id("shopping_cart_container"));
+		cart.click();
+		
+		Thread.sleep(2000);
+
+		WebElement checkout = driver.findElement(By.id("checkout"));
+		checkout.click();
+		
+		//Entering the details at checkout form
+		WebElement firstname = driver.findElement(By.id("first-name"));
+		firstname.sendKeys("Swati");
+		WebElement lastname = driver.findElement(By.id("last-name"));
+		lastname.sendKeys("Kumari");
+		WebElement zipcode = driver.findElement(By.id("postal-code"));
+		zipcode.sendKeys("560037");
+		
+		Thread.sleep(2000);
+		WebElement continuebutton = driver.findElement(By.id("continue"));
+		continuebutton.click();
+		Thread.sleep(2000);
+		WebElement finish = driver.findElement(By.id("finish"));
+		finish.click();
+		WebElement backtohome = driver.findElement(By.id("back-to-products"));
+		backtohome.click();
+		
+		Thread.sleep(2000);
+		WebElement addtocart1 = driver.findElement(By.id("add-to-cart-sauce-labs-backpack"));
+		addtocart1.click();
+		
+		Thread.sleep(2000);
+		//Clicking on Remove button
+		WebElement remove = driver.findElement(By.id("remove-sauce-labs-backpack"));
+		remove.click();
+		
+		Thread.sleep(2000);
+		driver.close();		
+	}
+}
